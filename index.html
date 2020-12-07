@@ -5,22 +5,33 @@
     </head>
         <body>
             <h3>Let's Fill the Space Under the Tree.</h3>
-            <h4>"I will honour Christmas in my heart, and try to keep it all the year." – Charles Dickens, A Christmas Carol</h4>
-                <div id="form_div">
-                    <form id="list_form">
-                        <input id="receiver" type="text" name="title" placeholder="Who's getting the gift?">
+            <h4>"I will honour Christmas in my heart, and try to keep it all the year."</h4>
+                <h5>– Charles Dickens, A Christmas Carol</h5>
+                <div id="form-container">
+
+                    <h3>Make a list</h3>
+                    
+                    <div id="form-div">
+                    
+                        <form id="list_form">
+                            <input id="receiver" type="text" name="title" placeholder="Who's getting the gift?">
                         <br>
-                        <input id="item-name" type="text" name="item_name" placeholder="Gift Name">
-                        <br>
-                        <input id="item-price" type="text" name="item_price" placeholder="Gift Price">
-                        <br>
-                        <input id="item-link" type="text" name="item_link" placeholder="Gift Link(Lets minimize returns)">
-                        <br>
-                        <p class="obtained">Gift Obtained?<input class="obtained" type="checkbox" name="item_obtained"></p>  
-                        <br>
-                        <input id="create_button" type="submit" value="Create List">
-                    </form>
+                            <div id="new-item">
+                                <input id="item-name" type="text" name="item_name" placeholder="Gift Name">
+                                    <br>
+                                <input id="item-price" type="text" name="item_price" placeholder="Gift Price">
+                                    <br>
+                                <input id="item-link" type="text" name="item_link" placeholder="Gift Link(Lets minimize returns)">
+                                    <br>
+                                <p class="obtained">Gift Obtained?<input class="obtained" type="checkbox" name="item_obtained"></p>  
+                            </div>
+                         <p class="additional">Another Gift?<input id="additional" type="checkbox" name="create_another"></p>  
+                                <br>
+                                <input id="create_button" type="submit" value="Create List">
+                        </form>
+                    </div>
                 </div>
+                
                 <div id="list-container">
 
                 </div>
