@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", function(e){
  listSubListen()
  addFieldListen()
 })
-// debugger
+        const formAdd = document.getElementById("list_form")
+        const another = document.getElementById("additional")
+        const addedField = document.getElementById("item-field")
 
 function listSubListen(){
     const subButton = document.getElementById("list_form")
@@ -33,7 +35,7 @@ function listSubListen(){
                 <h3>Name: ${list.name}</h3>
                 <h4>Price: ${list.price}</h4>
                 <a href= "${list.link}"> Item Link </a>
-                <p>Obtained: ${list.check ? "Got It!" : "Nope"}</p>
+                <p>Obtained: ${list.check}</p>
             </div>    
         </div>
         `
@@ -48,26 +50,15 @@ function listSubListen(){
         document.getElementById("item-name").value = ""
         document.getElementById("item-price").value = ""
         document.getElementById("item-link").value = ""
-        document.getElementById("obtaned").removeAttribute('checked')
-    }
-}
-function addFieldListen(){
-    const formAdd = document.getElementById("list_form")
-    const another = document.getElementById("additional")
-    const addedField = document.getElementById("item-field")
-    another.addEventListener("click", function(event){
-        if (another.checked){
-            console.log("I came to the JS party!")
-            // debugger
-            let newItem = document.querySelector('.new-item')
-           newItem.innerHTML += makeFields()
-        } else if(!another.checked){
-            console.log("I came to the JS party too!")
-            let newItem = document.querySelector('.new-item')
-            newItem.innerHTML.display = "none"
+        document.getElementById("obtained").disabled = true
         }
-        })
+}
 
+            
+function addFieldListen(){
+    another.addEventListener("click", function(event){
+       toggleClick()
+        })
 } 
     
 function makeFields(){
@@ -82,4 +73,16 @@ function makeFields(){
         <p class="obtained">Gift Obtained?<input id="obtained" type="checkbox" name="item_obtained"></p>  
     </div>
     `
+}
+
+function toggleClick(){
+    if (another.checked){
+        // console.log("I came to the JS party!")
+        let newItem = document.querySelector('.new-item')
+        newItem.innerHTML += makeFields()
+        } else if(!another.checked){
+            const addedField = document.getElementById("item-field")
+            let newItem = document.querySelector('.new-item')
+            newItem.slice(-1).remove()
+        }
 }
