@@ -15,7 +15,7 @@
                     
                         <form id="list_form">
                             <input id="receiver" type="text" name="title" placeholder="Who's getting the gift?">
-                        <br>
+                                    <br>
                             <div id="item-field">
                                 <input id="item-name" type="text" name="item_name" placeholder="Gift Name">
                                     <br>
@@ -25,19 +25,22 @@
                                     <br>
                                 <p class="obtained">Gift Obtained?<input id="obtained" type="checkbox" name="item_obtained"></p>  
                             </div>
-                            <div class="new-item">
+                                <div class="new-item">
+                                    <div class="new-item-fields">
+                                    <!-- new item inputs here -->
+                                    </div>
+                                </div>
 
-                            </div>
                          <p class="additional">Another Gift?<input id="additional" type="checkbox" name="create_another"></p>  
                                 <br>
                                 <input id="create_button" type="submit" value="Create List">
                         </form>
                     </div>
                 </div>
-                
-                <div id="list-container">
-
-                </div>
+                <br> 
+                            <div id="list-container">
+                            <!-- new list appears here -->
+                            </div>
         </body>
     
     <script src="index.js"> </script>

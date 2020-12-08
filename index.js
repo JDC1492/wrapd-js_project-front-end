@@ -57,32 +57,34 @@ function listSubListen(){
             
 function addFieldListen(){
     another.addEventListener("click", function(event){
-       toggleClick()
-        })
+        toggleClick()
+    })
 } 
-    
-function makeFields(){
-    return `
-    <div id="new-item">
-        <input id="item-name" type="text" name="item_name" placeholder="Gift Name">
-            <br>
-        <input id="item-price" type="text" name="item_price" placeholder="Gift Price">
-            <br>
-        <input id="item-link" type="text" name="item_link" placeholder="Gift Link(Lets minimize returns)">
-            <br>
-        <p class="obtained">Gift Obtained?<input id="obtained" type="checkbox" name="item_obtained"></p>  
-    </div>
-    `
-}
-
-function toggleClick(){
-    if (another.checked){
-        // console.log("I came to the JS party!")
-        let newItem = document.querySelector('.new-item')
-        newItem.innerHTML += makeFields()
-        } else if(!another.checked){
-            const addedField = document.getElementById("item-field")
-            let newItem = document.querySelector('.new-item')
-            newItem.slice(-1).remove()
+        function toggleClick(){
+            if(another.checked === true){
+            // console.log("I came to the JS party!")
+            let newItemField = document.querySelector('.new-item-fields')
+            newItemField.innerHTML += makeFields()
+            } else if(another.checked === false){
+            // const addedField = document.getElementById("item-field")
+            let newItemField = document.querySelector('.new-item-fields')
+            newItemField.removeChild('div')
+            }
         }
-}
+
+        function makeFields(){
+            return `
+            <div id="new-item">
+            <input id="item-name" type="text" name="item_name" placeholder="Gift Name">
+            <br>
+            <input id="item-price" type="text" name="item_price" placeholder="Gift Price">
+            <br>
+            <input id="item-link" type="text" name="item_link" placeholder="Gift Link(Lets minimize returns)">
+            <br>
+            <p class="obtained">Gift Obtained?<input id="obtained" type="checkbox" name="item_obtained"></p>  
+            </div>
+            `
+        }
+
+        function removeFields(){
+        }
