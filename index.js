@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 function listSubListen(){
     const subButton = document.getElementById("list_form")
     subButton.addEventListener("submit", function(event){
+        event.preventDefault()
         const userInput = takeInput(event)
         const listInfo = makeList(userInput)
         postList(listInfo)
@@ -25,13 +26,13 @@ function takeInput(event){
 
 function makeList(list){
     return `
-    <div>
+    <div class="list">
         <div>
-            <h1>${list.receiver}</h1>
-            <h3>${list.name}</h3>
-            <h4>${list.price}</h4>
-            <p>${list.link}</p>
-            <p>${list.check}</p>
+            <h1>${list.receiver}'s List</h1>
+            <h3>Name: ${list.name}</h3>
+            <h4>Price: ${list.price}</h4>
+            <p>Link: ${list.link}</p>
+            <p>Obtained ${list.check ? "Got It!" : "Nope"}</p>
         </div>    
     </div>
     `
