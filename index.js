@@ -1,18 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(e){
     // loadLists()
     listSubListen()
-    addFieldListener()
-    
 })
-// function showLists(lists)
-            // document.querySelector(".list-container").innerHTML = ""
-            // lists.forEach(function(list)
-            // {
-            //     postList(makeList(lists))
-            // }
-        const formAdd = document.getElementById("list_form")
-        const check = document.getElementById("additional")
-        const addedField = document.getElementById("item-field")
+        
         const holidayList = document.getElementById("list-container")
 
 
@@ -63,9 +53,15 @@ function listSubListen(){
         document.getElementById("item-name").value = ""
         document.getElementById("item-price").value = ""
         }
-
 }        
 
+
+const checkedBox = function(){
+      let check = document.getElementById("obtained")
+      check.addEventListener("click", function(e){
+          
+      })
+}
 
 
        
