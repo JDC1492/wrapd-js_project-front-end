@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(e){
- listSubListen()
- addFieldListen()
+    loadLists()
+    listSubListen()
+    addFieldListen()
 })
         const formAdd = document.getElementById("list_form")
         const another = document.getElementById("additional")
@@ -13,6 +14,7 @@ function listSubListen(){
       
         const userInput = takeInput(event)
         const listInfo = makeList(userInput)
+        console.log(userInput.check.value)
         postList(listInfo)
         clearForm()
     })
@@ -32,10 +34,10 @@ function listSubListen(){
         <div class="list">
             <div>
                 <h1>${list.receiver}'s List</h1>
-                <h3>Name: ${list.name}</h3>
+                <h3>Item: ${list.name}</h3>
                 <h4>Price: ${list.price}</h4>
                 <a href= "${list.link}"> Item Link </a>
-                <p>Obtained: ${list.check}</p>
+                <p>Obtained: ${list.check === 'on' ? "Got It!" : "There's Still Time!"}</p>
             </div>    
         </div>
         `
@@ -50,31 +52,51 @@ function listSubListen(){
         document.getElementById("item-name").value = ""
         document.getElementById("item-price").value = ""
         document.getElementById("item-link").value = ""
-        document.getElementById("obtained").disabled = true
+        document.getElementById("obtained").cheked = false
         }
+
+    // function checkStatus(){
+    //     if (list.check.checked === true) {
+    //         return "Got It!";
+    //       } else {
+    //         return "There's Still Time!";
+    //       }
+    // }
+
 }
 
             
+
+
+
+
+
 function addFieldListen(){
     another.addEventListener("click", function(event){
         toggleClick()
     })
 } 
+
+// const formAdd = document.getElementById("list_form")
+// const another = document.getElementById("additional")
+// const addedField = document.getElementById("item-field")
         function toggleClick(){
             if(another.checked === true){
-            // console.log("I came to the JS party!")
-            let newItemField = document.querySelector('.new-item-fields')
+            let newItemField = document.querySelector('.new-item')
             newItemField.innerHTML += makeFields()
-            } else if(another.checked === false){
+        } // else if(another.checked === false){
+        //     console.log("I came to the JS party!")
             // const addedField = document.getElementById("item-field")
-            let newItemField = document.querySelector('.new-item-fields')
-            newItemField.removeChild('div')
-            }
-        }
-
-        function makeFields(){
-            return `
-            <div id="new-item">
+        //     let newItemField = document.querySelector('.new-item-fields')
+        //     debugger
+        // newItemField.remove()
+        // }
+    }
+    
+    function makeFields(){
+        return `
+            <div class="new-item-fields">
+            <h2>_____________</h2>
             <input id="item-name" type="text" name="item_name" placeholder="Gift Name">
             <br>
             <input id="item-price" type="text" name="item_price" placeholder="Gift Price">
@@ -86,5 +108,5 @@ function addFieldListen(){
             `
         }
 
-        function removeFields(){
+        function loadLists(){
         }
