@@ -3,7 +3,7 @@ class List{
         this.name = name
         this.postList()
     }
-
+}
     //instance
     // makeList(){
     //     return `
@@ -31,4 +31,3 @@ class List{
     //     postList(makeList(this))
     // }
 
-}
