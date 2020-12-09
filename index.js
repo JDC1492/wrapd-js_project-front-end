@@ -63,7 +63,7 @@ function listSubListen(){
         return `
         <div class="list">
             <div>
-                <h1>${list.listTitle}'s List</h1>
+                <h1>A gift for: ${list.listTitle}</h1>
                 <h3>Item: ${list.name}</h3>
                 <h4>Price: ${list.price}</h4>
                 <a href= "${list.link}">Item Link</a><br>
