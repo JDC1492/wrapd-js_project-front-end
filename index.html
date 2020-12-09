@@ -14,7 +14,7 @@
                     <div id="form-div">
                     
                         <form id="list_form">
-                            <input id="receiver" type="text" name="title" placeholder="Who's getting the gift?">
+                            <input id="list-title" type="text" name="title" placeholder="Who's getting the gift?">
                                     <br>
                             <div id="item-field">
                                 <input id="item-name" type="text" name="item_name" placeholder="Gift Name">
@@ -23,26 +23,27 @@
                                     <br>
                                 <input id="item-link" type="text" name="item_link" placeholder="Gift Link(Lets minimize returns)">
                                     <br>
-                                <label>Gift Obtained?</label><input id="obtained" type="checkbox" name="item_obtained">
+                                <!-- <label>Gift Obtained?</label><input id="obtained" type="checkbox" name="item_obtained"> -->
                             </div>
                                 <div class="new-item">
                                     <div class="new-item-fields">
                                     <!-- new item inputs here -->
                                     </div>
                                 </div>
-
-                         <p class="additional">Another Gift?<input id="additional" type="checkbox" name="create_another"></p>  
+<!-- 
+                                <p class="additional">Another Gift?<input id="additional" type="checkbox" name="create_another"></p>   -->
                                 <br>
                                 <input id="create_button" type="submit" value="Create List">
                         </form>
                     </div>
                 </div>
                 <br> 
-                            <div id="list-container">
+                            <div  class="list-container" id="list-container">
                             <!-- new list appears here -->
                             </div>
         </body>
     
+    <script src="javascript/models/list.js"> </script>
     <script src="index.js"> </script>
         
 </html>

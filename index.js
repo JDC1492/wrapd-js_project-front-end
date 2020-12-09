@@ -3,9 +3,39 @@ document.addEventListener("DOMContentLoaded", function(e){
     listSubListen()
     addFieldListen()
 })
+
         const formAdd = document.getElementById("list_form")
         const another = document.getElementById("additional")
         const addedField = document.getElementById("item-field")
+        const holidayList = document.getElementById("list container")
+
+
+        function loadLists(){
+            fetch("http://localhost:3000/lists")
+                .then(function(resp){
+                    return resp.json()
+                })
+                .then(lists => {
+                    debugger
+                    lists.forEach(list => {
+                        const {title} = list
+                        const l = new List(title)
+                       showLists(l)
+                    })
+                })            
+                // .then(data => {
+                //     debugger
+                // })
+        }
+        
+
+        function showLists(lists)
+            // document.querySelector(".list-container").innerHTML = ""
+            // lists.forEach(function(list)
+            {
+                postList(makeList(lists))
+            }
+
 
 function listSubListen(){
     const subButton = document.getElementById("list_form")
@@ -14,37 +44,38 @@ function listSubListen(){
       
         const userInput = takeInput(event)
         const listInfo = makeList(userInput)
-        console.log(userInput.check.value)
         postList(listInfo)
         clearForm()
     })
     
+
     function takeInput(event){
         return {
-        receiver: event.target.querySelector('#receiver').value,
+        listTitle: event.target.querySelector('#list-title').value,
         name: event.target.querySelector('#item-name').value,
         price: event.target.querySelector('#item-price').value,
         link: event.target.querySelector('#item-link').value,
-        check: event.target.querySelector('#obtained').value
+        // check: event.target.querySelector('#obtained').value
         }
     }
-
+{/* <p>Obtained: ${list.check.on ? "Got It!" : "There's Still Time!"}</p> */}
     function makeList(list){
         return `
         <div class="list">
             <div>
-                <h1>${list.receiver}'s List</h1>
+                <h1>${list.listTitle}'s List</h1>
                 <h3>Item: ${list.name}</h3>
                 <h4>Price: ${list.price}</h4>
-                <a href= "${list.link}"> Item Link </a>
-                <p>Obtained: ${list.check === 'on' ? "Got It!" : "There's Still Time!"}</p>
+                <a href= "${list.link}">Item Link</a><br>
+                <label>Gift Obtained?</label><input id="obtained" type="checkbox" name="item_obtained">
             </div>    
         </div>
         `
     }
 
     function postList(list){
-        document.querySelector("#list-container").innerHTML += list
+       const set = document.querySelector("#list-container").innerHTML += list
+       
     }
 
     function clearForm(){
@@ -55,20 +86,7 @@ function listSubListen(){
         document.getElementById("obtained").cheked = false
         }
 
-    // function checkStatus(){
-    //     if (list.check.checked === true) {
-    //         return "Got It!";
-    //       } else {
-    //         return "There's Still Time!";
-    //       }
-    // }
-
 }
-
-            
-
-
-
 
 
 function addFieldListen(){
@@ -77,9 +95,6 @@ function addFieldListen(){
     })
 } 
 
-// const formAdd = document.getElementById("list_form")
-// const another = document.getElementById("additional")
-// const addedField = document.getElementById("item-field")
         function toggleClick(){
             if(another.checked === true){
             let newItemField = document.querySelector('.new-item')
@@ -106,7 +121,4 @@ function addFieldListen(){
             <p class="obtained">Gift Obtained?<input id="obtained" type="checkbox" name="item_obtained"></p>  
             </div>
             `
-        }
-
-        function loadLists(){
         }
