@@ -1,22 +1,36 @@
 class API{
-          static loadLists(){
+    
+        static loadLists(){
             fetch("http://localhost:3000/lists")
                 .then(resp => resp.json())
                 .then(lists => {
+                    debugger
                     lists.forEach(list => {
-                        const{name} = list
-                        new List(name)
-
+                        const id = list.id
+                        const name = list.name
+                        new List(id, name)
                     })
                 })
-          }
         }
+
+       
+
+        static loadList(e){
+            e.preventDefault()
+            let data = {
+                'name': e.target.name.value,
+                'list_item_attributes': [{
+                  'name': e.target.item_name.value,
+                  'price': e.target.item_price.value
+                }] 
+            };
+        }
+
+        
+}
+
+        
         
 
-
-        //  showLists(lists)
-        //     document.querySelector(".list-container").innerHTML = ""
-        //     lists.forEach(function(list)
-        //     {
-        //         postList(makeList(lists))
-        //     }
+      
+        

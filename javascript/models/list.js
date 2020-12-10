@@ -1,8 +1,9 @@
 class List{
-    constructor(name){
-        // this.id = id
+    constructor(id, name){
+        this.id = id
         this.name = name
         this.rendList()
+        this.listItemsFetch()
     }
 
 
@@ -21,9 +22,10 @@ class List{
         <div class="list">
             <div class="strike">
                 <h2>A gift for: ${this.name}</h2>
-                <h3>Item: ${this.name}</h3>
-                <h4>Price: ${this.price}</h4>
-                <label>Gift Obtained?</label><input id="obtained" type="checkbox" name="item_obtained">
+                <h3>Item: ${this.item_name}</h3>
+                <h4>Price: ${this.item_price}</h4>
+                <p>__________________________</p>
+                <button class="delete">DELETE</button>
                 <p>__________________________</p>
                 <br>           
             </div>    
@@ -32,29 +34,22 @@ class List{
     }
 
     listItemsFetch(){
-        fetch("http://localhost:3000/list_items")
+        fetch(`http://localhost:3000/lists/${this.id}/list_items`)
             .then(resp => resp.json())
             .then(liIt => {
+                debugger
                 liIt.forEach(liIt => {
-                    const{name, price} = list
-                    new ListItem(name, price)
-                    debugger
+                    const{item_name, item_price} = liIt
+                    new ListItem(liIt)
+                    
                 })
             })
-      }
+    }
+
+    
 }
     
    
 
-    
-//  postList(){
-//        const set = document.querySelector("#list-container").innerHTML += this
-  
-//     }
-    // showLists()
-    // document.querySelector(".list-container").innerHTML = ""
-    // lists.forEach(function(list)
-    // {
-    //     postList(makeList(this))
-    // }
+
 

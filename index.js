@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(e){
     API.loadLists()
-    listSubListen()
+    // listSubListen()
+    document.getElementById('list_form').addEventListener('submit', API.addList)
+    // API.listItemsFetch()
 })      
     const holidayList = document.getElementById("list-container")
 function listSubListen(){//works
@@ -26,7 +28,8 @@ function listSubListen(){//works
                 <h2>A gift for: ${list.listTitle}</h2>
                 <h3>Item: ${list.name}</h3>
                 <h4>Price: ${list.price}</h4>
-                <label>Gift Obtained?</label><input id="obtained" type="checkbox" name="item_obtained">
+                <p>__________________________</p>
+                <button class="delete">DELETE</button>
                 <p>__________________________</p>
                 <br>           
             </div>    
@@ -35,29 +38,27 @@ function listSubListen(){//works
     }
     function postList(list){//works
        const set = document.querySelector("#list-container").innerHTML += list
-       checkedBox()
+    //    checkedBox()
     }
     function clearForm(){//works
         document.getElementById("list-title").value = ""
         document.getElementById("item-name").value = ""
         document.getElementById("item-price").value = ""
-        }
+    }
 }       
 
 
-const checkedBox = function(){
-      let check = document.getElementById("obtained")
-      check.addEventListener("click", function(e){
-          if(check && check.checked){
-            strikeIt()
-          }
-      })
-}
-
-    const strikeIt = function(){
-         const done = document.querySelector('.strike')
-        
-        
-    }
+// const checkedBox = function(){
+//       let check = document.getElementById("obtained")
+//       check.addEventListener("click", function(e){
+//           if(check && check.checked){
+//             strikeIt()
+//           }
+//       })
+// }
+        //this function's purpose is to return the version of a strike-thru line in the text of this particular list item.
+//     const strikeIt = function(){
+//          const done = document.querySelector('.strike')
+//     }
 
        
