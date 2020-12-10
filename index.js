@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(e){
-    // loadLists()
+    API.loadLists()
     listSubListen()
 })      
     const holidayList = document.getElementById("list-container")
@@ -27,6 +27,7 @@ function listSubListen(){//works
                 <h3>Item: ${list.name}</h3>
                 <h4>Price: ${list.price}</h4>
                 <label>Gift Obtained?</label><input id="obtained" type="checkbox" name="item_obtained">
+                <p>__________________________</p>
                 <br>           
             </div>    
         </div>
