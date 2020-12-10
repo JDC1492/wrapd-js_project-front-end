@@ -1,0 +1,14 @@
+.list-container {
+    text-align: center;
+    border-top: 10px double #3957b0;
+    border-bottom: 10px double #85e08d;
+  
+}
+
+.list {
+    
+}
+
+.header, .form{
+text-align: center;
+}
