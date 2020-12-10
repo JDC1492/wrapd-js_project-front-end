@@ -30,9 +30,22 @@ class List{
         </div>
         `
     }
+
+    listItemsFetch(){
+        fetch("http://localhost:3000/list_items")
+            .then(resp => resp.json())
+            .then(liIt => {
+                liIt.forEach(liIt => {
+                    const{name, price} = list
+                    new ListItem(name, price)
+                    debugger
+                })
+            })
+      }
+}
     
    
-}
+
     
 //  postList(){
 //        const set = document.querySelector("#list-container").innerHTML += this
