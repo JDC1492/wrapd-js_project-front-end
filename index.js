@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(e){
     API.loadLists()
+    document.getElementById('list_form').addEventListener("submit", API.loadList)
     // listSubListen()
-    document.getElementById('list_form').addEventListener('submit', API.addList)
     // API.listItemsFetch()
 })      
     const holidayList = document.getElementById("list-container")

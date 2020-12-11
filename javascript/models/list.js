@@ -25,7 +25,7 @@ class List{
                 <h3>Item: ${this.item_name}</h3>
                 <h4>Price: ${this.item_price}</h4>
                 <p>__________________________</p>
-                <button class="delete">DELETE</button>
+                <button class="delete">d</button>
                 <p>__________________________</p>
                 <br>           
             </div>    
