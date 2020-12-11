@@ -6,6 +6,11 @@ class List{
         this.listItemsFetch()
     }
 
+    
+    deleteList(){
+        debugger
+        // fetch(`http://localhost:3000/lists/${id}`)
+    }
 
     rendList(){
         const listPlace = document.getElementById("list-container");
@@ -14,6 +19,9 @@ class List{
         listContainer.id = this.id
         listContainer.innerHTML += this.makeList()
         listPlace.appendChild(listContainer)
+        listContainer.addEventListener('click', event => {
+            if (event.target.className.includes('delete'))this.deleteList(event)
+        })
     }
 
     //instance
