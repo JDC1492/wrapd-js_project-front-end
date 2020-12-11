@@ -14,26 +14,26 @@ class API{
                 })
         }
 
-         listItemsFetch(){
-        fetch(`http://localhost:3000/lists/${this.id}/list_items`)
-            .then(resp => resp.json())
-            .then(liIt => {
-                liIt.forEach(liIt => {
-                    const{item_name, item_price} = liIt
-                    new ListItem(liIt)
-                })
-            })
-    }
+        // static listItemsFetch(){
+        // fetch(`http://localhost:3000/lists/${this.id}/list_items`)
+        //     .then(resp => resp.json())
+        //     .then(liIt => {
+        //         liIt.forEach(liIt => {
+        //             const{item_name, item_price} = liIt
+        //             new ListItem(liIt)
+        //         })
+        //     })
+        // }
 
        
-
+            //takes an event, used as callback for the submit of the 'list-form'
         static loadList(e){
             e.preventDefault()
             let data = {
                 'name': e.target.name.value,
                 'list_item_attributes': [{
-                  'name': e.target.item_name.value,
-                  'price': e.target.item_price.value
+                  'item_name': e.target.item_name.value,
+                  'item_price': e.target.item_price.value
                 }] 
             };
             fetch("http://localhost:3000/lists", {
@@ -42,11 +42,13 @@ class API{
                 'Content-Type': 'application/json'    
                 },
                 body: JSON.stringify(data)
+                //how info travels across the net.
             })
             .then(resp => resp.json())
             .then(list =>{
                 const {id, name} = list
                 new List(id, name)
+                //ask about maybe putting the nested attr here vv for items, since were taking the form data and JSONing it.
                 document.getElementById("list_form").reset()
             })
                 

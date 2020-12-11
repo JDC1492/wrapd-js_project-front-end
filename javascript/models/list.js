@@ -6,16 +6,7 @@ class List{
         // this.listItemsFetch()
     }
 
-    makeList(){//works
-        return `
-                <h2>A gift for: ${this.name}</h2>
-                <h3>Item: ${this.item_name}</h3>
-                <h4>Price: ${this.item_price}</h4>
-                <p>__________________________</p>
-                <button class="delete">Delete Gift?</button>
-                <p>__________________________</p>             
-        `
-    }
+   
 
     deleteList(e){
         const id = parseInt(e.target.parentElement.id)
@@ -32,13 +23,22 @@ class List{
         const listContainer = document.createElement('div')
         listContainer.dataset.id = this.id
         listContainer.id = this.id
-        listContainer.innerHTML += this.makeList()
+        listContainer.innerHTML += this.makeList() //-inside this div create the list for this object
         listPlace.appendChild(listContainer)
         listContainer.addEventListener('click', e => {
             if (e.target.className === 'delete')this.deleteList(e)
         })
     }
-
+    makeList(){// original below
+        return `
+                <h2>A gift for: ${this.name}</h2>
+                <div class="items-container">
+                </div>
+                <p>__________________________</p>
+                <button class="delete">Delete Gift Idea</button>
+                <p>__________________________</p>             
+        `
+    }
     //instance
   
 
@@ -62,3 +62,13 @@ class List{
 
 
 
+//  makeList(){//works
+    // return `
+    // <h2>A gift for: ${this.name}</h2>
+    // <h3>Item: ${this.item_name}</h3>
+    // <h4>Price: ${this.item_price}</h4>
+    // <p>__________________________</p>
+    // <button class="delete">Delete Gift?</button>
+    // <p>__________________________</p>             
+    // `
+    // }
