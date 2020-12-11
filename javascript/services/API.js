@@ -8,6 +8,7 @@ class API{
                     lists.forEach(list => {
                         const id = list.id
                         const name = list.name
+
                         new List(id, name)
                     })
                 })
@@ -31,7 +32,12 @@ class API{
                 },
                 body: JSON.stringify(data)
             })
-            .then(resp => console.log(resp))
+            .then(resp => resp.json())
+            .then(list =>{
+                const {id, name} = list
+                new List(id, name)
+                document.getElementById("list_form").reset()
+            })
                 
         }
 
