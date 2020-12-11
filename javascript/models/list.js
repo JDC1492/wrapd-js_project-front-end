@@ -3,43 +3,44 @@ class List{
         this.id = id
         this.name = name
         this.rendList()
-        this.listItemsFetch()
+        // this.listItemsFetch()
     }
 
-    
-    deleteList(){
-        debugger
-        // fetch(`http://localhost:3000/lists/${id}`)
-    }
-
-    rendList(){
-        const listPlace = document.getElementById("list-container");
-        const listContainer = document.createElement("div")
-        listContainer.dataset.id = this.id
-        listContainer.id = this.id
-        listContainer.innerHTML += this.makeList()
-        listPlace.appendChild(listContainer)
-        listContainer.addEventListener('click', event => {
-            if (event.target.className.includes('delete'))this.deleteList(event)
-        })
-    }
-
-    //instance
-  makeList(){//works
+    makeList(){//works
         return `
-        <div class="list">
-            <div class="strike">
                 <h2>A gift for: ${this.name}</h2>
                 <h3>Item: ${this.item_name}</h3>
                 <h4>Price: ${this.item_price}</h4>
                 <p>__________________________</p>
-                <button class="delete">d</button>
-                <p>__________________________</p>
-                <br>           
-            </div>    
-        </div>
+                <button class="delete">Delete Gift?</button>
+                <p>__________________________</p>             
         `
     }
+
+    deleteList(e){
+        const id = parseInt(e.target.parentElement.id)
+        fetch(`http://localhost:3000/lists/${id}`,{
+            method: 'DELETE'
+        })
+        .then(() => { //removing the child of the parent div, by its numbered ID corressponding with whats in the DB.
+            document.getElementById('list_container').removeChild(document.getElementById(id))
+        })
+    }
+
+    rendList(){
+        const listPlace = document.getElementById("list-container");
+        const listContainer = document.createElement('div')
+        listContainer.dataset.id = this.id
+        listContainer.id = this.id
+        listContainer.innerHTML += this.makeList()
+        listPlace.appendChild(listContainer)
+        listContainer.addEventListener('click', e => {
+            if (e.target.className === 'delete')this.deleteList(e)
+        })
+    }
+
+    //instance
+  
 
     listItemsFetch(){
         fetch(`http://localhost:3000/lists/${this.id}/list_items`)

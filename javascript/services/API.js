@@ -14,6 +14,17 @@ class API{
                 })
         }
 
+         listItemsFetch(){
+        fetch(`http://localhost:3000/lists/${this.id}/list_items`)
+            .then(resp => resp.json())
+            .then(liIt => {
+                liIt.forEach(liIt => {
+                    const{item_name, item_price} = liIt
+                    new ListItem(liIt)
+                })
+            })
+    }
+
        
 
         static loadList(e){

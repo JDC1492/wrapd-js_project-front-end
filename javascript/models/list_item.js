@@ -4,15 +4,15 @@ class ListItem{
         this.item_price = item_price
         
     }
-    static loadListItems(){
-        fetch("http://localhost:3000/list_items")
+  listItemsFetch(){
+        fetch(`http://localhost:3000/lists/${this.id}/list_items`)
             .then(resp => resp.json())
-            .then(lists => {
+            .then(liIt => {
                 debugger
-                lists.forEach(list => {
-                    const id = list.id
-                    const name = list.name
-                    new List(id, name)
+                liIt.forEach(liIt => {
+                    const{item_name, item_price} = liIt
+                    new ListItem(liIt)
+                    
                 })
             })
     }
