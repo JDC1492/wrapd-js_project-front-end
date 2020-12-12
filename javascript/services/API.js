@@ -30,18 +30,18 @@ class API{
             e.preventDefault()
             let data = {
                 'name': e.target.name.value,
-                'list_item_attributes': [{
+                'list_items_attributes': [{
                   'item_name': e.target.item_name.value,
                   'item_price': e.target.item_price.value
                 }] 
-            };
+            };debugger
             fetch("http://localhost:3000/lists", {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'     
                 },
                 body: JSON.stringify(data)
-                //how info travels across the net.
+                //how info travels across the net.resp => resp.json()
             })
             .then(resp => resp.json())
                 .then(list =>{
