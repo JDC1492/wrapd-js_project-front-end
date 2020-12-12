@@ -11,7 +11,7 @@ class List{
                 .then(listItem => {
                     listItem.forEach(listItem => {
                         const{id, item_name, item_price, list_id} = listItem
-                        debugger
+                    
                         new ListItem(id, item_name, item_price, list_id)       
                     })
                 })
@@ -34,7 +34,6 @@ class List{
         const listContainer = document.createElement('div')
         listContainer.dataset.id = this.id
         listContainer.id = this.id
-        debugger
         listContainer.innerHTML += this.makeList()//-inside this div create the list for this object
         this.listItemsFetch() 
         listPlace.appendChild(listContainer)

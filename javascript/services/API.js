@@ -45,7 +45,6 @@ class API{
             })
             .then(resp => resp.json())
                 .then(list =>{
-                    debugger
                     //ask about maybe putting the nested attr here vv for items, since were taking the form data and JSONing it.
                     const {id, name} = list
                     new List(id, name)
