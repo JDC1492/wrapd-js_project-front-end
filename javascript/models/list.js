@@ -15,8 +15,7 @@ class List{
                     
                         new ListItem(id, item_name, item_price, list_id)       
                     })
-                })
-                
+                })        
     }   
 
     deleteList(e){
@@ -48,7 +47,7 @@ class List{
                 <p>__________________________</p>             
                 <div id="item_container_${this.id}">
                 </div>
-                <button class="delete">Delete Gift Idea</button>
+                <button class="delete">Delete List</button>
                 <p>__________________________</p>
         `
     }

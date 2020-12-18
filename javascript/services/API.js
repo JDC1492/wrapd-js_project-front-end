@@ -11,20 +11,7 @@ class API{
                         new List(id, name)
                     })
                 })
-        }
-
-        // static listItemsFetch(){
-        // fetch(`http://localhost:3000/lists/${this.id}/list_items`)
-        //     .then(resp => resp.json())
-        //     .then(liIt => {
-        //         liIt.forEach(liIt => {
-        //             const{item_name, item_price} = liIt
-        //             new ListItem(liIt)
-        //         })
-        //     })
-        // }
-
-       
+        }       
             //takes an event, used as callback for the submit of the 'list-form'
         static loadList(e){
             e.preventDefault()
@@ -45,18 +32,24 @@ class API{
             })
             .then(resp => resp.json())
                 .then(list =>{
-                    //ask about maybe putting the nested attr here vv for items, since were taking the form data and JSONing it.
                     const {id, name} = list
                     new List(id, name)
                     document.getElementById("list_form").reset()
                 })
         }
-
-        
 }
 
         
-        
+           // static listItemsFetch(){
+        // fetch(`http://localhost:3000/lists/${this.id}/list_items`)
+        //     .then(resp => resp.json())
+        //     .then(liIt => {
+        //         liIt.forEach(liIt => {
+        //             const{item_name, item_price} = liIt
+        //             new ListItem(liIt)
+        //         })
+        //     })
+        // }
 
       
         
