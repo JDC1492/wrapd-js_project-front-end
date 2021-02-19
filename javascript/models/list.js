@@ -2,17 +2,16 @@ class List{
     constructor(id, name){
         this.id = id
         this.name = name
-        this.rendList() 
-               
+        this.rendList()     
+        this.newItem() 
     }
-
+    //placed in this class so lists can handle the fetching of thier own items.
     listItemsFetch(){
             fetch(`http://localhost:3000/lists/${this.id}/list_items`)
             .then(resp => resp.json())
                 .then(listItem => {
                     listItem.forEach(listItem => {
                         const{id, item_name, item_price, list_id} = listItem
-                    
                         new ListItem(id, item_name, item_price, list_id)       
                     })
                 })        
@@ -28,10 +27,11 @@ class List{
             document.getElementById('list_container').removeChild(document.getElementById(id))
         })
     }
-
+    //list to page.
     rendList(){
         const listPlace = document.getElementById("list_container");
         const listContainer = document.createElement('div')
+        listContainer.classList.add('indiList')
         listContainer.dataset.id = this.id
         listContainer.id = this.id
         listContainer.innerHTML += this.makeList()//-inside this div create the list for this object
@@ -39,36 +39,79 @@ class List{
         listPlace.appendChild(listContainer)
         listContainer.addEventListener('click', e => {
             if (e.target.className === 'delete')this.deleteList(e)
+            })   
+    }
+
+        //list HTML formed with appropriate information.
+        makeList(){// original below
+            return `
+                    <h2>${this.name}'s List</h2>
+                    <input id="new_item_input_${this.id}" type="checkbox" class="another"><label>Something extra?</label>
+                    <div id="another_form_${this.id}">
+                    </div>
+          
+                    <div id="item_container_${this.id}">
+                    </div>
+                    <button class="delete">Delete List</button>
+            `
+        } 
+
+    newItem(){
+        document.getElementById(`new_item_input_${this.id}`).addEventListener('change', e => {
+            if(e.target.checked){
+            document.getElementById(`another_form_${this.id}`).innerHTML += this.cueTheInput()
+            this.createNewItem()
+            }   
         })
     }
-    makeList(){// original below
+
+    cueTheInput(){
         return `
-                <h2>A gift for: ${this.name}</h2>
-                <p>__________________________</p>             
-                <div id="item_container_${this.id}">
-                </div>
-                <button class="delete">Delete List</button>
-                <p>__________________________</p>
-        `
+        <div id="item_field_for_list_${this.id}">
+            <form id="new_item_form">
+                <input id="item_name" type="text" name="item_name" placeholder="Gift Name">
+                    <br>
+                <input id="item_price" type="text" name="item_price" placeholder="Gift Price">
+                    <br>
+                <button id="create_item" class="submit" >Another for ${this.name}?</button>
+                <!--<input id="create_item" type="submit" value="Another for ${this.name}?">-->
+            </form>
+        </div>
+        `  
     }
-  
 
-    
+    createNewItem(e){
+                document.getElementById("new_item_form").addEventListener("submit", e => {
+                    e.preventDefault()
+                    let addIt = {
+                    'item_name': e.target.item_name.value,
+                    'item_price': e.target.item_price.value,
+                    'list_id': e.target.parentElement.parentElement.parentElement.id
+                    }
+                    fetch("http://localhost:3000/list_items", {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'     
+                    },
+                    body: JSON.stringify(addIt)
+                //how info travels across the net.resp => resp.json()
+                    })
+                    .then(resp => resp.json())
+                    .then(listItem => {
+                    // listItem.forEach(listItem => {
+                    const{id, item_name, item_price, list_id} = listItem
+                    new ListItem(id, item_name, item_price, list_id)       
+                    // })
+                }) 
+                    this.clearIt()       
+                })     
+    }  
 
-    
-}
-    
-   
-
-
-
-//  makeList(){//works
-    // return `
-    // <h2>A gift for: ${this.name}</h2>
-    // <h3>Item: ${this.item_name}</h3>
-    // <h4>Price: ${this.item_price}</h4>
-    // <p>__________________________</p>
-    // <button class="delete">Delete Gift?</button>
-    // <p>__________________________</p>             
-    // `
+    // addNewItem(){
+        
     // }
+    
+    clearIt(){
+        document.getElementById("new_item_form").reset()
+    }
+}

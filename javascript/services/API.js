@@ -1,6 +1,7 @@
 class API{
     
         static loadLists(){
+            //read fetch
             fetch("http://localhost:3000/lists")
                 .then(resp => resp.json())
                 .then(lists => {
@@ -21,7 +22,7 @@ class API{
                   'item_name': e.target.item_name.value,
                   'item_price': e.target.item_price.value
                 }] 
-            };debugger
+            };
             fetch("http://localhost:3000/lists", {
                 method: 'POST',
                 headers: {
@@ -38,18 +39,6 @@ class API{
                 })
         }
 }
-
-        
-           // static listItemsFetch(){
-        // fetch(`http://localhost:3000/lists/${this.id}/list_items`)
-        //     .then(resp => resp.json())
-        //     .then(liIt => {
-        //         liIt.forEach(liIt => {
-        //             const{item_name, item_price} = liIt
-        //             new ListItem(liIt)
-        //         })
-        //     })
-        // }
 
       
         

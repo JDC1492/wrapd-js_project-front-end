@@ -1,8 +1,14 @@
 .list_container {
+    margin: auto;
     text-align: center;
-    border-top: 10px double #3957b0;
-    border-bottom: 10px double #85e08d;
-  
+    display: flex;
+    flex-flow: wrap;
+}
+
+.indiList{
+    margin: auto;
+    padding: 15px;
+    
 }
 
 .header, .form{

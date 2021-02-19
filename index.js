@@ -1,12 +1,12 @@
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function(){
     API.loadLists()
     document.getElementById('list_form').addEventListener("submit", API.loadList)
-    // API.listItemsFetch()
-    // listSubListen()
+    
 })      
 
 
-
+    // API.listItemsFetch()
+    // listSubListen()
 
 //     const holidayList = document.getElementById("list-container")
 // function listSubListen(){//works
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 //     }
 //     function postList(list){//works
 //        const set = document.querySelector("#list-container").innerHTML += list
-//     //    checkedBox()
+//        checkedBox()
 //     }
 //     function clearForm(){//works
 //         document.getElementById("list-title").value = ""
@@ -60,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 //           }
 //       })
 // }
-        //this function's purpose is to return the version of a strike-thru line in the text of this particular list item.
+//         this function's purpose is to return the version of a strike-thru line in the text of this particular list item.
 //     const strikeIt = function(){
 //          const done = document.querySelector('.strike')
 //     }
-
-       
