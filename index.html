@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html lang="eng">
-    <head>
-        <title>Welcome to Wrap'd: The Holiday Gift List Application</title>
-        <link rel="stylesheet" href="css/index.css">
+  <head>
+    <title>Welcome to Wrap'd: The Holiday Gift List Application</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <h3 class="header">Let's Fill the Space Under the Tree.</h3>
+    <h4 class="header">
+      "I will honour Christmas in my heart, and try to keep it all the year."
+    </h4>
+    <h5 class="header">– Charles Dickens, A Christmas Carol</h5>
+    <div id="form_container">
+      <h3 class="header">Make a list</h3>
+      <div id="form-div" class="form">
+        <form id="list_form">
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Who's getting the gift?"
+          />
+          <br />
+          <div id="item-field">
+            <input
+              id="item_name"
+              type="text"
+              name="item_name"
+              placeholder="Gift Name"
+            />
+            <br />
+            <input
+              id="item_price"
+              type="text"
+              name="item_price"
+              placeholder="Gift Price"
+            />
+            <br />
+          </div>
+          <br />
+          <input id="create_button" type="submit" value="Create List" />
+        </form>
+      </div>
+    </div>
+    <br />
+    <div class="list_container" id="list_container">
+      <!-- listSubListen results appears here -->
+    </div>
+  </body>
 
-    </head>
-        <body>
-            <h3 class="header">Let's Fill the Space Under the Tree.</h3>
-            <h4 class="header">"I will honour Christmas in my heart, and try to keep it all the year."</h4>
-                <h5 class="header">– Charles Dickens, A Christmas Carol</h5>
-                <div id="form_container">
-                    <h3 class="header">Make a list</h3>
-                    <div id="form-div" class="form">               
-                        <form id="list_form">
-                            <input id="name" type="text" name="name" placeholder="Who's getting the gift?">
-                                    <br>
-                            <div id="item-field">
-                                <input id="item_name" type="text" name="item_name" placeholder="Gift Name">
-                                    <br>
-                                <input id="item_price" type="text" name="item_price" placeholder="Gift Price">
-                                    <br>
-                            </div>
-                                <br>
-                                <input id="create_button" type="submit" value="Create List">
-                        </form>
-                    </div>
-                </div>
-                <br> 
-                            <div  class="list_container" id="list_container">
-                            <!-- listSubListen results appears here -->
-                            </div>
-        </body>
-    
-    <script src="javascript/services/API.js"> </script>
-    <script src="javascript/models/list_item.js"> </script>   
-    <script src="javascript/models/list.js"> </script>
-    <script src="index.js"> </script>
-        
+  <script src="javascript/services/API.js"></script>
+  <script src="javascript/models/list_item.js"></script>
+  <script src="javascript/models/list.js"></script>
+  <script src="index.js"></script>
 </html>
