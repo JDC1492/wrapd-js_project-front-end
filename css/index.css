@@ -1,16 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
-.body {
+body {
   font-family: "Muli", sans-serif;
+  background-color: #7ed2a2;
+  /* opacity: 0.5; */
+  background: repeating-linear-gradient(
+    -45deg,
+    #f74545,
+    #f74545 12px,
+    #7ed2a2 12px,
+    #7ed2a2 60px
+  );
 }
 
 .list_container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   text-align: center;
-  position: relative;
-  align-items: center;
+  /* position: relative; */
+  /* align-items: center; */
   /* justify-content: center; */
   /* margin: auto; */
 }
