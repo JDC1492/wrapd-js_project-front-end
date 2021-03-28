@@ -1,12 +1,20 @@
-document.addEventListener("DOMContentLoaded", function(){
-    API.loadLists()
-    document.getElementById('list_form').addEventListener("submit", API.loadList)
-    
-})      
+document.addEventListener("DOMContentLoaded", function () {
+  API.loadLists();
+  document.getElementById("list-form").addEventListener("submit", API.loadList);
+});
 
+function validateForm() {
+  let name = document.forms["gift-form"]["name"].value;
+  let itemName = document.forms["gift-form"]["item_name"].value;
+  let itemPrice = document.forms["gift-form"]["item_price"].value;
+  if (name == "" || itemName === "" || itemPrice === "") {
+    alert("All fields must be filled out");
+    return false;
+  }
+}
 
-    // API.listItemsFetch()
-    // listSubListen()
+// API.listItemsFetch()
+// listSubListen()
 
 //     const holidayList = document.getElementById("list-container")
 // function listSubListen(){//works
@@ -16,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
 //     const userInput = takeInput(event)
 //     const listInfo = makeList(userInput)
 //         postList(listInfo)
-//         clearForm()    
+//         clearForm()
 //     })
 //     function takeInput(event){//works
 //         return {
@@ -35,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function(){
 //                 <p>__________________________</p>
 //                 <button class="delete">DELETE</button>
 //                 <p>__________________________</p>
-//                 <br>           
-//             </div>    
+//                 <br>
+//             </div>
 //         </div>
 //         `
 //     }
@@ -49,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function(){
 //         document.getElementById("item-name").value = ""
 //         document.getElementById("item-price").value = ""
 //     }
-// }       
-
+// }
 
 // const checkedBox = function(){
 //       let check = document.getElementById("obtained")
