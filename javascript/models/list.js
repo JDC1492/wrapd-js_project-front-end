@@ -72,7 +72,9 @@ class List {
         } else if (!e.target.checked) {
           document
             .getElementById(`another_form_${this.id}`)
-            .removeChild(innerHTML);
+            .removeChild(
+              document.getElementById(`another_form_${this.id}`).childNodes[1]
+            );
         }
       });
   }
